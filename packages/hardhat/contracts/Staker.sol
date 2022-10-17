@@ -4,9 +4,6 @@ pragma solidity 0.8.4; //Do not change the solidity version as it negativly impa
 import "hardhat/console.sol";
 import "./ExampleExternalContract.sol";
 
-error SendFailed(); // 用send发送ETH失败error
-error CallFailed(); // 用call发送ETH失败error
-
 contract Staker {
     ExampleExternalContract public exampleExternalContract;
     mapping(address => uint256) public balances;
@@ -66,7 +63,7 @@ contract Staker {
 
     // Add the `receive()` special function that receives eth and calls stake()
     receive() external payable {
-        this.stake();
+        stake();
     }
 
     modifier notCompleted() {
